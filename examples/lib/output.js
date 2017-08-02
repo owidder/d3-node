@@ -10,13 +10,9 @@ module.exports = function (outputName, d3n) {
     return;
   }
 
-  fs.writeFile('examples/dist/'+outputName+'.html', d3n.html(), function () {
+  fs.writeFile('/Users/owidder/dev/github/d3-node/examples/dist/'+outputName+'.html', d3n.html(), function () {
+    console.log(d3n.html());
     console.log('>> Done. Open "examples/dist/'+outputName+'.html" in a web browser');
+    process.exit(0);
   });
-
-  var svgBuffer = new Buffer(d3n.svgString(), 'utf-8');
-  svg2png(svgBuffer)
-    .then(buffer => fs.writeFile('examples/dist/'+outputName+'.png', buffer))
-    .catch(e => console.error('ERR:', e))
-    .then(err => console.log('>> Exported: "examples/dist/'+outputName+'.png"'));
 };

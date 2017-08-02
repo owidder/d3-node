@@ -12,7 +12,7 @@ const styles = `
 }`;
 
 var options = {
-  svgStyles: styles,
+  styles: styles,
   d3Module: d3
 };
 
